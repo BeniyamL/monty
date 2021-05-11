@@ -13,6 +13,8 @@ void push_monty(stack_t **stack, unsigned int line_no)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		ErrorReport(Err_malloc, NULL, line_no);
+	if (op_arg == NULL || stack == NULL || !is_digit())
+		ErrorReport(Err_user2, NULL, line_no);
 	new_node->n = atoi(op_arg);
 	
 	if (*stack == NULL)

@@ -9,12 +9,12 @@ char *op_arg = NULL;
  **/
 int main(int argc, char **argv)
 {
-	FILE *fd;
+	FILE *fd = NULL;
 	size_t line_size = 0;
-	char *line;
+	char *line = NULL;
 	unsigned int line_no = 1;
 	int status = 0;
-	char *op_code;
+	char *op_code = NULL;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -53,7 +53,6 @@ int main(int argc, char **argv)
  **/
 int Execute(char *op_code, stack_t **stack, unsigned int line_no)
 {
-	//void (*handler)(stack_t **, unsigned int);
 	int handler = 0;
 
 	handler = handle_functions(op_code, stack, line_no);
@@ -61,7 +60,6 @@ int Execute(char *op_code, stack_t **stack, unsigned int line_no)
 	{
 		return (Err_sys);
 	}
-	//handler(&stack, line_no);
 	
 	return (0);
 }

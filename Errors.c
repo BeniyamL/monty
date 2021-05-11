@@ -28,5 +28,9 @@ void ErrorReport(int Error_no, char *op_code, unsigned int line_no)
 			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 			break;
+		case 500:
+			fprintf(stderr, "L%d: usage: push integer\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
 	}
 }

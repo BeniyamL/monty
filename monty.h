@@ -8,6 +8,7 @@
 #define DELIM " \n\t"
 #define Err_sys 300
 #define Err_malloc 400
+#define Err_user2 500
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -64,4 +65,7 @@ void pall_monty(stack_t **stack, unsigned int line_no);
 void free_stack(stack_t **stack);
 int init_stack(stack_t **stack);
 int stack_or_queue(stack_t *stack);
+
+/** func_helper.c **/
+int is_digit(void);
 #endif
