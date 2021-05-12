@@ -93,7 +93,7 @@ void pop_monty(stack_t **stack, unsigned int line_no)
 	free(cur);
 }
 /**
- * swap - swaps the top two elements of the stack
+ * swap_monty - swaps the top two elements of the stack
  * @stack: the head of the stack
  * @line_no: the line number of the monty file
  *

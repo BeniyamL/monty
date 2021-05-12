@@ -50,12 +50,12 @@ void sub_monty(stack_t **stack, unsigned int line_no)
 	n = list_len(stack);
 	if (n < 2)
 		ErrorReport_2(Err_sub_len, line_no);
-        val = tmp->n;
-        val2 = tmp->next->n;
-        dif = val2 - val;
-        tmp->next->n = dif;
-        tmp->next->prev = tmp->prev;
-        *stack = tmp->next;
-        free(tmp);
+	val = tmp->n;
+	val2 = tmp->next->n;
+	dif = val2 - val;
+	tmp->next->n = dif;
+	tmp->next->prev = tmp->prev;
+	*stack = tmp->next;
+	free(tmp);
 
 }
