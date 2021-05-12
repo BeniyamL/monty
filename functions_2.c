@@ -102,7 +102,7 @@ void mul_monty(stack_t **stack, unsigned int line_no)
 	val = tmp->n;
 	val2 = tmp->next->n;
 	prod = val2 * val;
-	tmp->next->n = dif;
+	tmp->next->n = prod;
 	tmp->next->prev = tmp->prev;
 	*stack = tmp->next;
 	free(tmp);
