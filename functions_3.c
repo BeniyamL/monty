@@ -41,7 +41,8 @@ void pchar_monty(stack_t **stack, unsigned int line_no)
 		ErrorReport_2(Err_pchar_len, line_no);
 	if (tmp == NULL || stack == NULL)
 		ErrorReport_2(Err_pchar_empty, line_no);
-	printf("%c\n", tmp->n);
+	if (tmp->n >= 0 && tmp->n <= 127)
+		printf("%c\n", tmp->n);
 }
 
 /**
