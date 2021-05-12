@@ -17,6 +17,7 @@ void add_monty(stack_t **stack, unsigned int line_no)
 		ErrorReport(Err_add_len, NULL, line_no);
 	sum = tmp->n + tmp->next->n;
 	tmp->next->n = sum;
+	tmp->next->prev = tmp->prev;
 	*stack = tmp->next;
 	free(tmp);
 }
