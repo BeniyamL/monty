@@ -24,6 +24,11 @@ int main(int argc, char **argv)
 		ErrorReport(Err_file, argv[1], 0);
 	while (getline(&line, &line_size, fd) != -1)
 	{
+		if (line[0] == '#')
+		{
+			continue;
+			line_no++;
+		}
 		op_code = strtok(line, DELIM);
 		if (op_code)
 		{
