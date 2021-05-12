@@ -83,6 +83,7 @@ int handle_functions(char *op_code, stack_t **stack, unsigned int line_no)
 		{"swap", swap_monty},
 		{"add", add_monty},
 		{"nop", nop_monty},
+		{"sub", sub_monty},
 		{NULL, NULL}
 	};
 

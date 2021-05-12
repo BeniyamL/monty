@@ -13,6 +13,7 @@
 #define Err_empty_pop 700
 #define Err_swap_len 800
 #define Err_add_len 900
+#define Err_sub_len 1000
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -81,5 +82,6 @@ int list_len(stack_t **stack);
 /** functions_2.c **/
 void add_monty(stack_t **stack, unsigned int line_no);
 void nop_monty(stack_t **stack, unsigned int line_no);
+void sub_monty(stack_t **stack, unsigned int line_no);
 
 #endif
