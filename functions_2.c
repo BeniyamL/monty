@@ -10,12 +10,14 @@
 void add_monty(stack_t **stack, unsigned int line_no)
 {
 	stack_t *tmp = *stack;
-	int sum, n = 0;
+	int sum, n = 0, val, val2;
 
 	n = list_len(stack);
 	if (n < 2)
 		ErrorReport(Err_add_len, NULL, line_no);
-	sum = tmp->n + tmp->next->n;
+	val = tmp->n;
+	val2 = tmp->next->n;
+	sum = val + val2;
 	tmp->next->n = sum;
 	tmp->next->prev = tmp->prev;
 	*stack = tmp->next;
