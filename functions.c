@@ -77,20 +77,20 @@ void pint_monty(stack_t **stack, unsigned int line_no)
  **/
 void pop_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *cur = *stack, *tmp = *stack;
+	stack_t *cur = *stack;
 
 	if (cur == NULL || stack == NULL)
 		ErrorReport(Err_empty_pop, NULL, line_no);
 	if (cur->next)
 	{
-		cur->next->prev = tmp->prev;
+		cur->next->prev = cur->prev;
 		*stack = cur->next;
 	}
 	else
 	{
 		*stack = NULL;
 	}
-	free(tmp);
+	free(cur);
 }
 /**
  * swap - swaps the top two elements of the stack
