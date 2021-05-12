@@ -84,3 +84,26 @@ void div_monty(stack_t **stack, unsigned int line_no)
 	*stack = tmp->next;
 	free(tmp);
 }
+/**
+ * mul_monty - function to multiply the second top and the top element
+ * @stack: the head of the stack
+ * @line_no: the line number of the monty file
+ *
+ * Return: nothing
+ **/
+void mul_monty(stack_t **stack, unsigned int line_no)
+{
+	stack_t *tmp = *stack;
+	int prod, val, val2, n = 0;
+
+	n = list_len(stack);
+	if (n < 2)
+		ErrorReport_2(Err_mul_len, line_no);
+	val = tmp->n;
+	val2 = tmp->next->n;
+	prod = val2 * val;
+	tmp->next->n = dif;
+	tmp->next->prev = tmp->prev;
+	*stack = tmp->next;
+	free(tmp);
+}

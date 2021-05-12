@@ -16,6 +16,7 @@
 #define Err_sub_len 1000
 #define Err_div_len 1100
 #define Err_div_0 1200
+#define Err_mul_len 1300
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -86,5 +87,6 @@ void add_monty(stack_t **stack, unsigned int line_no);
 void nop_monty(stack_t **stack, unsigned int line_no);
 void sub_monty(stack_t **stack, unsigned int line_no);
 void div_monty(stack_t **stack, unsigned int line_no);
+void mul_monty(stack_t **stack, unsigned int line_no);
 
 #endif

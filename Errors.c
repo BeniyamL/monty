@@ -74,5 +74,9 @@ void ErrorReport_2(int Error_no, unsigned int line_no)
 			fprintf(stderr, "L%d: division by zero\n", line_no);
 			exit(EXIT_FAILURE);
 			break;
+		case 1300:
+			fprintf(stderr, "L%d: can't mul, stack too short\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
 	}
 }
