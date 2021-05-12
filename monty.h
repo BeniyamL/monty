@@ -18,6 +18,8 @@
 #define Err_div_0 1200
 #define Err_mul_len 1300
 #define Err_mod_len 1400
+#define Err_pchar_len 1500
+#define Err_pchar_empty 1600
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -92,5 +94,6 @@ void mul_monty(stack_t **stack, unsigned int line_no);
 
 /** functions_3.c **/
 void mod_monty(stack_t **stack, unsigned int line_no);
-
+void pchar_monty(stack_t **stack, unsigned int line_no);
+void pstr_monty(stack_t **stack, unsigned int line_no);
 #endif

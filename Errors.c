@@ -82,5 +82,13 @@ void ErrorReport_2(int Error_no, unsigned int line_no)
 			fprintf(stderr, "L%d: can't mod, stack too short\n", line_no);
 			exit(EXIT_FAILURE);
 			break;
+		case 1500:
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
+		case 1600:
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
 	}
 }
