@@ -94,6 +94,8 @@ int handle_functions(char *op_code, stack_t **stack, unsigned int line_no)
 		{"mod", mod_monty},
 		{"pchar", pchar_monty},
 		{"pstr", pstr_monty},
+		{"rotl", rotl_monty},
+		{"rotr", rotr_monty},
 		{NULL, NULL}
 	};
 

@@ -64,3 +64,57 @@ void pstr_monty(stack_t **stack, unsigned int line_no)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl_monty - function that rotates the stack to the top
+ * @stack: the head of the stack
+ * @line_no: the line number of the monty file
+ *
+ * Return: nothing
+ **/
+void rotl_monty(stack_t **stack, unsigned int line_no)
+{
+	stack_t *cur = *stack;
+	int n = 0, val;
+
+	n = list_len(stack);
+	if (n > 1)
+	{
+		while (cur->next != NULL)
+		{
+			val = cur->n;
+			cur->n = cur->next->n;
+			cur->next->n = val;
+			cur = cur->next;
+		}
+	}
+	(void) line_no;
+}
+
+/**
+ * rotr_monty - function to rotate the stack to the bottom
+ * @stack: the head of the stack
+ * @line_no: the line number of the monty file
+ *
+ * Return: nothing
+ **/
+void rotr_monty(stack_t **stack, unsigned int line_no)
+{
+	stack_t *cur = *stack;
+	int n = 0, val;
+
+	n = list_len(stack);
+	if (n > 1)
+	{
+		while (cur->next)
+			cur = cur->next;
+		while (cur->prev != NULL)
+		{
+			val = cur->n;
+			cur->n = cur->prev->n;
+			cur->prev->n = val;
+			cur = cur->prev;
+		}
+	}
+	(void) line_no;
+}

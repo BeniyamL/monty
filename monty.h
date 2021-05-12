@@ -96,4 +96,6 @@ void mul_monty(stack_t **stack, unsigned int line_no);
 void mod_monty(stack_t **stack, unsigned int line_no);
 void pchar_monty(stack_t **stack, unsigned int line_no);
 void pstr_monty(stack_t **stack, unsigned int line_no);
+void rotl_monty(stack_t **stack, unsigned int line_no);
+void rotr_monty(stack_t **stack, unsigned int line_no);
 #endif
