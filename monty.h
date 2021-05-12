@@ -9,6 +9,10 @@
 #define Err_sys 300
 #define Err_malloc 400
 #define Err_user2 500
+#define Err_empty 600
+#define Err_empty_pop 700
+#define Err_swap_len 800
+#define Err_add_len 900
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -31,9 +35,9 @@ extern char *op_arg;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -46,12 +50,13 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /** Errors.c **/
 void ErrorReport(int Error_no, char *op_code, unsigned int line_no);
+void ErrorReport_2(int Error_no, unsigned int line_no);
 
 /** main.c **/
 int Execute(char *op_code, stack_t **stack, unsigned int line_no);
@@ -60,6 +65,9 @@ int handle_functions(char *op_code, stack_t **stack, unsigned int line_no);
 /** functions.c **/
 void push_monty(stack_t **stack, unsigned int line_no);
 void pall_monty(stack_t **stack, unsigned int line_no);
+void pint_monty(stack_t **stack, unsigned int line_no);
+void pop_monty(stack_t **stack, unsigned int line_no);
+void swap_monty(stack_t **stack, unsigned int line_no);
 
 /** free_mem.c **/
 void free_stack(stack_t **stack);
@@ -68,4 +76,10 @@ int stack_or_queue(stack_t *stack);
 
 /** func_helper.c **/
 int is_digit(void);
+int list_len(stack_t **stack);
+
+/** functions_2.c **/
+void add_monty(stack_t **stack, unsigned int line_no);
+void nop_monty(stack_t **stack, unsigned int line_no);
+
 #endif

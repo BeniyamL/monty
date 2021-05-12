@@ -46,8 +46,9 @@ int main(int argc, char **argv)
 
 /**
  * Execute - function to execute the operation code
- * @op_code: the given code
- * @op_arg: the given argument
+ * @stack: the given code
+ * @line_no: the given argument
+ * @op_code: the operation code
  *
  * Return: the status of the execution
  **/
@@ -60,28 +61,34 @@ int Execute(char *op_code, stack_t **stack, unsigned int line_no)
 	{
 		return (Err_sys);
 	}
-	
 	return (0);
 }
 
 /**
  * handle_functions - function to handle operation
- * @op_code: the operation
+ * @stack: the operation
+ * @line_no: the line number of the monty file
+ * @op_code: the operation code
  *
  * Return: the corresponding function handle or null if it fails
  **/
 int handle_functions(char *op_code, stack_t **stack, unsigned int line_no)
 {
 	int i = 0;
-	instruction_t instruction [] = {
+	instruction_t instruction[] = {
 		{"push", push_monty},
 		{"pall", pall_monty},
+		{"pint", pint_monty},
+		{"pop", pop_monty},
+		{"swap", swap_monty},
+		{"add", add_monty},
+		{"nop", nop_monty},
 		{NULL, NULL}
 	};
 
 	while (instruction[i].opcode)
 	{
-		if(strcmp(op_code, instruction[i].opcode) == 0)
+		if (strcmp(op_code, instruction[i].opcode) == 0)
 		{
 			instruction[i].f(stack, line_no);
 			return (1);

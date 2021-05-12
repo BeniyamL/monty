@@ -32,5 +32,35 @@ void ErrorReport(int Error_no, char *op_code, unsigned int line_no)
 			fprintf(stderr, "L%d: usage: push integer\n", line_no);
 			exit(EXIT_FAILURE);
 			break;
+		case 600:
+			fprintf(stderr, "L%d: can't pint, stack empty\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
+		case 700:
+			fprintf(stderr, "L%d: can't pop, an empty stack\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
+		case 800:
+			fprintf(stderr, "L%d: can't swap, stack too short\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
+	}
+}
+
+/**
+ * ErrorReport_2 - function to print the error
+ * @Error_no: the error number
+ * @line_no: the nubmer of lines of the monty file
+ *
+ * Return: nothing
+ **/
+void ErrorReport_2(int Error_no, unsigned int line_no)
+{
+	switch (Error_no)
+	{
+		case 900:
+			fprintf(stderr, "L%d: can't add, stack too short\n", line_no);
+			exit(EXIT_FAILURE);
+			break;
 	}
 }
