@@ -107,7 +107,7 @@ void rotr_monty(stack_t **stack, unsigned int line_no)
 	{
 		while (cur->next)
 			cur = cur->next;
-		while (cur->prev != NULL)
+		while (cur->prev->prev != NULL)
 		{
 			val = cur->n;
 			cur->n = cur->prev->n;
