@@ -92,7 +92,7 @@ void pop_monty(stack_t **stack, unsigned int line_no)
 	}
 	if (cur->next)
 	{
-		cur->next->prev = cur->prev;
+		cur->next->prev = *stack;
 		(*stack)->next = cur->next;
 	}
 	else
