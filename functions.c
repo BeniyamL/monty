@@ -24,7 +24,7 @@ void push_monty(stack_t **stack, unsigned int line_no)
 		new_node->next = tmp;
 		new_node->prev = *stack;
 		if (tmp)
-			tmp->prev = *stack;
+			tmp->prev = new_node;
 		(*stack)->next = new_node;
 	}
 	else if ((*stack)->n == flag_queue)

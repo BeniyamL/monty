@@ -99,7 +99,7 @@ void rotl_monty(stack_t **stack, unsigned int line_no)
  **/
 void rotr_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *cur = (*stack)->next;
+	stack_t *cur = *stack;
 	int n = 0, val;
 
 	n = list_len(stack);
