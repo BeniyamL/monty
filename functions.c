@@ -9,6 +9,7 @@
 void push_monty(stack_t **stack, unsigned int line_no)
 {
 	stack_t *new_node = NULL;
+	stack_t *tmp = NULL;
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
@@ -17,18 +18,24 @@ void push_monty(stack_t **stack, unsigned int line_no)
 		ErrorReport(Err_user2, NULL, line_no);
 	new_node->n = atoi(op_arg);
 
-	if (*stack == NULL)
+	if ((*stack)->n == flag_stack)
 	{
-		new_node->next = *stack;
-		new_node->prev = NULL;
-		*stack = new_node;
-		return;
+		tmp = (*stack)->next;
+		new_node->next = tmp;
+		new_node->prev = *stack;
+		if (tmp)
+			tmp->prev = *stack;
+		(*stack)->next = new_node;
 	}
-
-	new_node->next = *stack;
-	new_node->prev = NULL;
-	(*stack)->prev = new_node;
-	*stack = new_node;
+	else if ((*stack)->n == flag_queue)
+	{
+		tmp = *stack;
+		while (tmp->next)
+			tmp = tmp->next;
+		new_node->next = NULL;
+		new_node->prev = tmp;
+		tmp->next = new_node;
+	}
 }
 
 /**
@@ -40,12 +47,11 @@ void push_monty(stack_t **stack, unsigned int line_no)
  **/
 void pall_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *cur;
+	stack_t *cur = (*stack)->next;
 	(void) line_no;
 
-	if (*stack)
+	if (cur)
 	{
-		cur = *stack;
 		while (cur)
 		{
 			printf("%d\n", cur->n);
@@ -62,9 +68,9 @@ void pall_monty(stack_t **stack, unsigned int line_no)
  **/
 void pint_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *top = *stack;
+	stack_t *top = (*stack)->next;
 
-	if (top == NULL || stack == NULL)
+	if (top == NULL)
 		ErrorReport(Err_empty, NULL, line_no);
 	printf("%d\n", top->n);
 }
@@ -77,18 +83,21 @@ void pint_monty(stack_t **stack, unsigned int line_no)
  **/
 void pop_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *cur = *stack;
+	stack_t *cur = (*stack)->next;
 
 	if (cur == NULL || stack == NULL)
+	{
+		free_stack(stack);
 		ErrorReport(Err_empty_pop, NULL, line_no);
+	}
 	if (cur->next)
 	{
 		cur->next->prev = cur->prev;
-		*stack = cur->next;
+		(*stack)->next = cur->next;
 	}
 	else
 	{
-		*stack = NULL;
+		(*stack)->next = NULL;
 	}
 	free(cur);
 }
@@ -101,14 +110,14 @@ void pop_monty(stack_t **stack, unsigned int line_no)
  **/
 void swap_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *temp = *stack;
+	stack_t *temp = (*stack)->next;
 	int n = 0, val;
 
 	n = list_len(stack);
-	if (n < 2)
+	if ((n - 1) < 2)
 		ErrorReport(Err_swap_len, NULL, line_no);
 	val = temp->n;
 	temp->n = temp->next->n;
 	temp->next->n = val;
-	*stack = temp;
+	(*stack)->next = temp;
 }

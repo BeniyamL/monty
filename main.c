@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 		ErrorReport(Err_file, argv[1], 0);
+	init_stack(&stack);
 	while (getline(&line, &line_size, fd) != -1)
 	{
 		op_code = strtok(line, DELIM);
@@ -96,6 +97,8 @@ int handle_functions(char *op_code, stack_t **stack, unsigned int line_no)
 		{"pstr", pstr_monty},
 		{"rotl", rotl_monty},
 		{"rotr", rotr_monty},
+		{"stack", stack_monty},
+		{"queue", queue_monty},
 		{NULL, NULL}
 	};
 

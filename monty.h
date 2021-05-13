@@ -1,8 +1,8 @@
 #ifndef monty_h
 #define monty_h
 
-#define STACK 0
-#define QUEUE 1
+#define flag_stack 0
+#define flag_queue 1
 #define Err_user 100
 #define Err_file 200
 #define DELIM " \n\t"
@@ -78,8 +78,7 @@ void swap_monty(stack_t **stack, unsigned int line_no);
 
 /** free_mem.c **/
 void free_stack(stack_t **stack);
-int init_stack(stack_t **stack);
-int stack_or_queue(stack_t *stack);
+void init_stack(stack_t **stack);
 
 /** func_helper.c **/
 int is_digit(void);
@@ -98,4 +97,8 @@ void pchar_monty(stack_t **stack, unsigned int line_no);
 void pstr_monty(stack_t **stack, unsigned int line_no);
 void rotl_monty(stack_t **stack, unsigned int line_no);
 void rotr_monty(stack_t **stack, unsigned int line_no);
+
+/** functions_4.c **/
+void stack_monty(stack_t **stack, unsigned int line_no);
+void queue_monty(stack_t **stack, unsigned int line_no);
 #endif

@@ -9,18 +9,18 @@
  **/
 void add_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp = (*stack)->next;
 	int sum, n = 0, val, val2;
 
 	n = list_len(stack);
-	if (n < 2)
+	if ((n - 1) < 2)
 		ErrorReport_2(Err_add_len, line_no);
 	val = tmp->n;
 	val2 = tmp->next->n;
 	sum = val + val2;
 	tmp->next->n = sum;
 	tmp->next->prev = tmp->prev;
-	*stack = tmp->next;
+	(*stack)->next = tmp->next;
 	free(tmp);
 }
 /**
@@ -44,18 +44,18 @@ void nop_monty(stack_t **stack, unsigned int line_no)
  **/
 void sub_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp = (*stack)->next;
 	int dif, val, val2, n = 0;
 
 	n = list_len(stack);
-	if (n < 2)
+	if ((n - 1) < 2)
 		ErrorReport_2(Err_sub_len, line_no);
 	val = tmp->n;
 	val2 = tmp->next->n;
 	dif = val2 - val;
 	tmp->next->n = dif;
 	tmp->next->prev = tmp->prev;
-	*stack = tmp->next;
+	(*stack)->next = tmp->next;
 	free(tmp);
 
 }
@@ -68,11 +68,11 @@ void sub_monty(stack_t **stack, unsigned int line_no)
  **/
 void div_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp = (*stack)->next;
 	int quotient, val, val2, n = 0;
 
 	n = list_len(stack);
-	if (n < 2)
+	if ((n - 1) < 2)
 		ErrorReport_2(Err_div_len, line_no);
 	val = tmp->n;
 	if (val == 0)
@@ -81,7 +81,7 @@ void div_monty(stack_t **stack, unsigned int line_no)
 	quotient = val2 / val;
 	tmp->next->n = quotient;
 	tmp->next->prev = tmp->prev;
-	*stack = tmp->next;
+	(*stack)->next = tmp->next;
 	free(tmp);
 }
 /**
@@ -93,17 +93,17 @@ void div_monty(stack_t **stack, unsigned int line_no)
  **/
 void mul_monty(stack_t **stack, unsigned int line_no)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp = (*stack)->next;
 	int prod, val, val2, n = 0;
 
 	n = list_len(stack);
-	if (n < 2)
+	if ((n - 1) < 2)
 		ErrorReport_2(Err_mul_len, line_no);
 	val = tmp->n;
 	val2 = tmp->next->n;
 	prod = val2 * val;
 	tmp->next->n = prod;
 	tmp->next->prev = tmp->prev;
-	*stack = tmp->next;
+	(*stack)->next = tmp->next;
 	free(tmp);
 }
